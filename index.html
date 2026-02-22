@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hayatım 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Dancing+Script&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #1a1a1a, #2b2b2b, #3d3d3d);
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Açılış ekranı */
+#intro {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 22px;
+    text-align: center;
+    animation: fadeOut 3s forwards;
+    animation-delay: 3s;
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* Ana içerik */
+.container {
+    opacity: 0;
+    animation: fadeIn 2s forwards;
+    animation-delay: 3s;
+    text-align: center;
+    padding: 20px;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+h1 {
+    font-family: 'Dancing Script', cursive;
+    font-size: 42px;
+}
+
+/* Kalpler 🤍 */
+.heart {
+    position: fixed;
+    bottom: -20px; /* ekranın altından başlasın */
+    color: white;
+    animation: float linear forwards;
+    z-index: 9999; /* her şeyin üstünde olsun */
+    pointer-events: none;
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(-110vh) scale(1.8);
+        opacity: 0;
+    }
+}
+
+/* Buton */
+button {
+    margin-top: 30px;
+    padding: 12px 22px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: black;
+    font-size: 16px;
+}
+
+/* Gizli içerik */
+.hidden {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Foto */
+img {
+    width: 90%;
+    max-width: 300px;
+    border-radius: 20px;
+    margin-top: 20px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.3);
+}
+</style>
+</head>
+
+<body>
+
+<!-- Açılış -->
+<div id="intro">
+    9. ayımız kutlu olsun sevgilim. Seninle yeniden doğdum 🤍
+</div>
+
+<!-- Ana içerik -->
+<div class="container">
+
+<h1>🤍</h1>
+
+<p>bugün bizim 9. ayımız...</p>
+
+<button onclick="showContent()">Tıkla</button>
+
+<div id="content" class="hidden">
+
+    <p>
+seninle geçen her an benim için ayrı bir anlam taşıyor 
+    <br><br>
+senin en çok şefkatini seviyorum
+    <br><br>
+gözlerine uzun uzun bakmak içimi ısıtıyor
+    <br><br>
+bazen farkında olmuyorsun belki ama
+    <br><br>
+senin küçük gibi görünen davranışların,
+    <br><br>
+benim kalbimde kocaman yer kaplıyor
+    <br><br>
+her an yanımda olduğunu biliyorum
+    <br><br>
+bu bana her zaman cesaret veriyor
+    <br><br>
+sayende hayata tutunuyorum sevgilim
+    <br><br>
+
+iyi ki varsın Akın,  
+iyi ki benimlesin.
+ben seninle sonsuz olmak istiyorum.
+    </p>
+    <p><b>Seni gerçekten seviyorum 🤍</b></p>
+
+    <img src="foto.jpeg" alt="biz">
+
+    <br><br>
+    <p><b>bana armağan ettiğin ve çok mutlu olduğum şarkı🤍</b></p>
+    <audio controls>
+        <source src="sarki.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+</div>
+
+<script>
+function showContent() {
+    document.getElementById("content").classList.add("show");
+
+
+    setTimeout(() => {
+        startHearts();
+    }, 1000);
+}
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "🤍";
+
+        // Rastgele konum
+heart.style.left = Math.random() * 100 + "vw";
+heart.style.bottom = "-20px";
+
+        // Rastgele boyut
+        const size = Math.random() * 25 + 15;
+        heart.style.fontSize = size + "px";
+
+        // Parlama efekti
+        heart.style.textShadow = "0 0 10px white, 0 0 20px white";
+
+        // Farklı hızlar
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 6000);
+    }, 200);
+}
+</script>
+
+</body>
+</html>
